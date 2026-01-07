@@ -6,15 +6,47 @@
 <title>Grizzly AntiScam v2</title>
 
 <style>
-*{box-sizing:border-box;font-family:Inter,system-ui,Arial}
+*{
+  box-sizing:border-box;
+  font-family:Inter,system-ui,Arial
+}
+
 body{
   margin:0;
   background:radial-gradient(circle at top,#0b1220,#020409 70%);
   color:#e5e7eb;
 }
-.container{max-width:430px;margin:auto;padding:20px 14px 80px}
-h1{font-size:1.4rem;margin:0}
-.sub{font-size:.8rem;opacity:.7;margin-bottom:20px}
+
+.container{
+  max-width:430px;
+  margin:auto;
+  padding:26px 14px 160px;
+}
+
+.header{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.logo{
+  width:72px;
+  height:72px;
+  border-radius:16px;
+  object-fit:cover;
+  box-shadow:0 0 30px rgba(59,130,246,.45);
+  margin-bottom:8px;
+}
+
+h1{
+  font-size:1.5rem;
+  margin:6px 0 2px;
+}
+
+.sub{
+  font-size:.8rem;
+  opacity:.7;
+  margin-bottom:18px;
+}
 
 .card{
   background:rgba(2,6,23,.85);
@@ -22,6 +54,7 @@ h1{font-size:1.4rem;margin:0}
   border-radius:16px;
   padding:16px;
   margin-top:18px;
+  box-shadow:0 0 30px rgba(0,0,0,.45);
 }
 
 input,textarea,button{
@@ -34,65 +67,128 @@ input,textarea,button{
   margin-top:10px;
 }
 
-textarea{resize:none;height:80px}
-button{border:none;font-weight:600;cursor:pointer}
+textarea{
+  resize:none;
+  height:80px;
+}
+
+button{
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+}
 
 .btn-blue{background:#3b82f6}
 .btn-green{background:#22c55e}
 .btn-red{background:#ef4444}
+.btn-discord{background:#5865F2}
 
-.row{display:flex;gap:10px}
+.row{
+  display:flex;
+  gap:10px;
+}
+
 .row input{flex:1}
-small{opacity:.6}
+
+.footer{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(2,6,23,.95);
+  border-top:1px solid #020617;
+}
+
+.footer .wrap{
+  max-width:430px;
+  margin:auto;
+  padding:12px 14px;
+}
+
+.footer p{
+  margin:6px 0;
+  font-size:.7rem;
+  opacity:.75;
+  line-height:1.4;
+}
+
+.footer a{
+  text-decoration:none;
+  display:block;
+  margin-top:8px;
+}
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
-<h1>Grizzly AntiScam v2</h1>
-<div class="sub">Webhook Testing & Security Tool</div>
-
-<div class="card">
-  <input id="webhook" placeholder="Discord Webhook URL">
-  <button class="btn-blue" onclick="connect()">Connect</button>
-</div>
-
-<div class="card">
-  <b>Webhook Information</b>
-  <div id="info"><small>No conectado</small></div>
-</div>
-
-<div class="card">
-  <b>Message Spammer</b>
-  <textarea id="msg" placeholder="Enter your message"></textarea>
-  <div class="row">
-    <input id="count" type="number" value="1" placeholder="Count">
-    <input id="delay" type="number" value="1000" placeholder="Delay (ms)">
+  <div class="header">
+    <img src="./logo.png" class="logo" alt="Grizzly Logo">
+    <h1>Grizzly AntiScam v2</h1>
+    <div class="sub">Webhook Testing & Security Tool</div>
   </div>
-  <button class="btn-blue" onclick="sendSpam()">Send Messages</button>
+
+  <div class="card">
+    <input id="webhook" placeholder="Discord Webhook URL">
+    <button class="btn-blue" onclick="connect()">Connect</button>
+  </div>
+
+  <div class="card">
+    <b>Webhook Information</b>
+    <div id="info"><small>No conectado</small></div>
+  </div>
+
+  <div class="card">
+    <b>Message Spammer</b>
+    <textarea id="msg" placeholder="Enter your message"></textarea>
+    <div class="row">
+      <input id="count" type="number" value="1" placeholder="Count">
+      <input id="delay" type="number" value="1000" placeholder="Delay (ms)">
+    </div>
+    <button class="btn-blue" onclick="sendSpam()">Send Messages</button>
+  </div>
+
+  <div class="card">
+    <b>Rapid Spammer</b>
+    <textarea id="rapid" placeholder="Rapid spam message"></textarea>
+    <button class="btn-green" onclick="rapidSpam()">Rapid Spam</button>
+  </div>
+
+  <div class="card">
+    <b>Webhook Editor</b>
+    <input id="name" placeholder="Webhook Name">
+    <input id="avatar" placeholder="Avatar URL">
+    <button class="btn-green" onclick="updateWebhook()">Update Webhook</button>
+  </div>
+
+  <div class="card">
+    <b style="color:#ef4444">Danger Zone</b>
+    <button class="btn-red" onclick="deleteWebhook()">Delete Webhook</button>
+  </div>
+
 </div>
 
-<div class="card">
-  <b>Rapid Spammer</b>
-  <textarea id="rapid" placeholder="Rapid spam message"></textarea>
-  <button class="btn-green" onclick="rapidSpam()">Rapid Spam</button>
-</div>
+<div class="footer">
+  <div class="wrap">
+    <p>
+      © 2026 Grizzly Studio. All rights reserved.<br>
+      Grizzly AntiScam v2 is an independent security tool.<br>
+      Not affiliated with Discord Inc.
+    </p>
 
-<div class="card">
-  <b>Webhook Editor</b>
-  <input id="name" placeholder="Webhook Name">
-  <input id="avatar" placeholder="Avatar URL">
-  <button class="btn-green" onclick="updateWebhook()">Update Webhook</button>
-</div>
+    <p>
+      Unauthorized copying, modification, redistribution or misuse of this
+      software is strictly prohibited.
+    </p>
 
-<div class="card">
-  <b style="color:#ef4444">Danger Zone</b>
-  <button class="btn-red" onclick="deleteWebhook()">Delete Webhook</button>
-</div>
-
+    <a href="https://discord.gg/ktJAw3wvSK" target="_blank" rel="noopener">
+      <button class="btn-discord">Join our Discord</button>
+    </a>
+  </div>
 </div>
 
 <script src="script.js"></script>
 </body>
-    </html>
+</html>
