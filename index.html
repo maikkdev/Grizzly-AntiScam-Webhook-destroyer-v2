@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grizzly AntiScam v2</title>
+
+<style>
+*{box-sizing:border-box;font-family:Inter,system-ui,Arial}
+body{
+  margin:0;
+  background:radial-gradient(circle at top,#0b1220,#020409 70%);
+  color:#e5e7eb;
+}
+.container{max-width:430px;margin:auto;padding:20px 14px 80px}
+h1{font-size:1.4rem;margin:0}
+.sub{font-size:.8rem;opacity:.7;margin-bottom:20px}
+
+.card{
+  background:rgba(2,6,23,.85);
+  border:1px solid #020617;
+  border-radius:16px;
+  padding:16px;
+  margin-top:18px;
+}
+
+input,textarea,button{
+  width:100%;
+  background:#020617;
+  border:1px solid #1e293b;
+  color:#fff;
+  padding:12px;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+textarea{resize:none;height:80px}
+button{border:none;font-weight:600;cursor:pointer}
+
+.btn-blue{background:#3b82f6}
+.btn-green{background:#22c55e}
+.btn-red{background:#ef4444}
+
+.row{display:flex;gap:10px}
+.row input{flex:1}
+small{opacity:.6}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Grizzly AntiScam v2</h1>
+<div class="sub">Webhook Testing & Security Tool</div>
+
+<div class="card">
+  <input id="webhook" placeholder="Discord Webhook URL">
+  <button class="btn-blue" onclick="connect()">Connect</button>
+</div>
+
+<div class="card">
+  <b>Webhook Information</b>
+  <div id="info"><small>No conectado</small></div>
+</div>
+
+<div class="card">
+  <b>Message Spammer</b>
+  <textarea id="msg" placeholder="Enter your message"></textarea>
+  <div class="row">
+    <input id="count" type="number" value="1" placeholder="Count">
+    <input id="delay" type="number" value="1000" placeholder="Delay (ms)">
+  </div>
+  <button class="btn-blue" onclick="sendSpam()">Send Messages</button>
+</div>
+
+<div class="card">
+  <b>Rapid Spammer</b>
+  <textarea id="rapid" placeholder="Rapid spam message"></textarea>
+  <button class="btn-green" onclick="rapidSpam()">Rapid Spam</button>
+</div>
+
+<div class="card">
+  <b>Webhook Editor</b>
+  <input id="name" placeholder="Webhook Name">
+  <input id="avatar" placeholder="Avatar URL">
+  <button class="btn-green" onclick="updateWebhook()">Update Webhook</button>
+</div>
+
+<div class="card">
+  <b style="color:#ef4444">Danger Zone</b>
+  <button class="btn-red" onclick="deleteWebhook()">Delete Webhook</button>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+    </html>
